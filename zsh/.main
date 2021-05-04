@@ -2,3 +2,8 @@
 
 source $DOTFILES_REPO/zsh/.p10k.zsh
 source $DOTFILES_REPO/zsh/.npm_completion
+source $DOTFILES_REPO/zsh/.func
+
+if [[ -f $DOTFILES_REPO/zsh/.extra ]] {
+  source $DOTFILES_REPO/zsh/.extra
+}
