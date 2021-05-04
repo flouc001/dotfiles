@@ -14,8 +14,6 @@ link_file () {
 
 echo "Loading files from: $DOTFILES_REPO"
 echo "Symlinking config files..."
-# ln -sv $DOTFILES_REPO/zsh/.zshrc $HOME/.zshrc
-#
  
 link_file $DOTFILES_REPO/vim/.vimrc $HOME/.vimrc
 link_file $DOTFILES_REPO/zsh/.zshrc $HOME/.zshrc
