@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+source $DOTFILES_REPO/zsh/.p10k.zsh
+source $DOTFILES_REPO/zsh/.npm_completion
