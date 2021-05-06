@@ -1,19 +1,28 @@
 DOTFILES_REPO=$HOME/.dotfiles
 
 link_file () {
-	if [[ -f $2 ]] {
-		read -q "ans?Would you like to overwrite $1? "
+	src=$1
+	dst=$2
+	if [[ -f $dst || -h $dst ]] {
+		read -q "ans?Would you like to overwrite $dst? "
 		echo ""
 		if [[ $ans == "y" ]] {
-			ln -fsv $1 $2
+			ln -fhsv $src $dst
 		}
 	} else {
-		ln -sv $1 $2
+		ln -sv $src $dst
 	}
 }
 
 echo "Loading files from: $DOTFILES_REPO"
 echo "Symlinking config files..."
- 
-link_file $DOTFILES_REPO/vim/.vimrc $HOME/.vimrc
-link_file $DOTFILES_REPO/zsh/.zshrc $HOME/.zshrc
+
+install_dotfiles () {
+	for src in $(find -H "$DOTFILES_REPO" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+	do
+		dst="$HOME/.$(basename "${src%.*}")"
+		link_file "$src" "$dst"
+	done
+}
+
+install_dotfiles
