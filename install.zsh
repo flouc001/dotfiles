@@ -15,9 +15,9 @@ link_file () {
 }
 
 echo "Loading files from: $DOTFILES_REPO"
-echo "Symlinking config files..."
 
 install_dotfiles () {
+	echo "Symlinking config files..."
 	for src in $(find -H "$DOTFILES_REPO" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
 	do
 		dst="$HOME/.$(basename "${src%.*}")"
@@ -25,4 +25,20 @@ install_dotfiles () {
 	done
 }
 
+install_git () {
+	echo "Installing git config..."
+	if [[ ! -f "$HOME/.gitconfig" ]] {
+		creds_file="$DOTFILES_REPO/git/.creds"
+		if [[ -f $creds_file ]] {
+			source $creds_file
+
+			git config --global user.name "$GH_AUTHOR_NAME"
+			git config --global user.email "$GH_EMAIL"
+			git config --global github.user "$GH_USER"
+			git config --global include.path "$DOTFILES_REPO/git/gitconfig.ini"
+		}
+	}
+}
+
+install_git
 install_dotfiles
