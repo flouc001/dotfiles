@@ -1,3 +1,19 @@
 #!/bin/zsh
 
-alias g=git
+# Git aliases
+alias g='git'
+alias gd='g diff'
+alias gdh='g diff HEAD'
+alias gco='g checkout'
+alias gcob='g checkout -b '
+alias gss='g status -sb -uall'
+alias gll='g log --oneline'
+alias glast='g log -1 HEAD --stat'
+alias gc='g commit -m'
+alias gl='g pull'
+alias gaa='g add --all'
+alias gp='g push'
+alias gpo='g push --set-upstream origin '
+alias gst='g stash'
+alias gstl='g stash list'
+alias gstp='g stash pop'
