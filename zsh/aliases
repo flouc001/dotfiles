@@ -2,6 +2,7 @@
 
 # Git aliases
 alias g='git'
+alias ga='git add'
 alias gd='g diff'
 alias gdh='g diff HEAD'
 alias gco='g checkout'
