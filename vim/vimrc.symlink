@@ -13,6 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'elzr/vim-json'
 Plugin 'joshdick/onedark.vim'
 Plugin 'preservim/nerdtree'
+Plugin 'prettier/vim-prettier'
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,5 +47,15 @@ if (empty($TMUX))
   endif
 endif
 
+" Preferences
 syntax on
 colorscheme onedark
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
