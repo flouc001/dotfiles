@@ -1,3 +1,0 @@
-ripgrep
-fd
-diff-so-fancy
