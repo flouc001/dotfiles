@@ -2,3 +2,9 @@ window:
   padding:
     x: 5
     y: 5
+
+key_bindings:
+  - { key: Key3, mods: Alt, chars: "\x23" }
+
+import:
+  - ~/.config/dracula_theme.yml

@@ -1,4 +1,4 @@
-DOTFILES_REPO=$HOME/.dotfiles
+export DOTFILES_REPO=$HOME/.dotfiles
 
 link_file () {
 	src=$1
@@ -40,5 +40,16 @@ install_git () {
 	}
 }
 
+run_installs () {
+  echo "Running other install files..."
+  for src in $(find "$DOTFILES_REPO" -mindepth 2 -name "install_*")
+  do
+    echo "Executing: $src"
+    zsh $src
+  done
+}
+
 install_git
 install_dotfiles
+run_installs
+
