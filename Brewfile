@@ -1,4 +1,5 @@
 brew "ripgrep"
 brew "fd"
 brew "diff-so-fancy"
+brew "tmux"
 cask "alacritty"

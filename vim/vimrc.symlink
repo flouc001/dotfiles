@@ -15,6 +15,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'prettier/vim-prettier'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm run build' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
