@@ -6,7 +6,7 @@ stow_config () {
   for package in $(find "$DOTFILES_REPO/stow" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
   do
     echo "Stowing: $package"
-    stow -d "$DOTFILES_REPO/stow" -t "$HOME/test-stow" --dotfiles $package
+    stow -d "$DOTFILES_REPO/stow" -t "$HOME" --dotfiles -R $package
   done
 }
 

@@ -1,4 +1,5 @@
 CONFIG_DIRECTORY="${HOME}/.config"
+DOTFILES_REPO="${HOME}/.dotfiles"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -46,6 +47,6 @@ alias gstm='g stash -m '
 alias gstp='g stash pop'
 
 # Extra Config
-if [[ -f $DOTFILES_REPO/zsh/.extra ]] {
- source $DOTFILES_REPO/zsh/.extra
+if [[ -f $CONFIG_DIRECTORY/zsh/.extra ]] {
+ source $CONFIG_DIRECTORY/zsh/.extra
 }
