@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-echo "Alacritty: Grabbing the latest dracula theme..."
+echo "Grabbing the latest dracula theme..."
 if curl -G https://raw.githubusercontent.com/dracula/alacritty/master/dracula.yml --output "$HOME/.config/dracula_theme.yml" --silent ; then
-  echo "Alacritty: Theme downloaded!"
+  echo "Theme downloaded!"
 else
-  echo "Alacritty: Failed downloading theme."
+  echo "Failed downloading theme."
 fi

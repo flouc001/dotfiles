@@ -1,8 +1,18 @@
 #!/bin/zsh
 
-echo "VIM: Downloading latest vim-plug..."
-if curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim ; then
-  echo "VIM: vim-plug downloaded and installed in autoload directory!"
+echo "Installing vim-plug for vim and nvim..."
+
+vim_autoload_directory="${HOME}/.vim/autoload"
+nvim_autoload_directory="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/"
+
+echo "Creating directories: ${vim_autoload_directory}, ${nvim_autoload_directory}"
+mkdir -p $vim_autoload_directory
+mkdir -p $nvim_autoload_directory
+
+echo "Fetching and writing plugin file..."
+curl -sfL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee "${vim_autoload_directory}/plug.vim" "${nvim_autoload_directory}/plug.vim" > /dev/null
+if [ $? -eq 0 ] ; then
+  echo "Successfully installed vim-plug!"
 else
-  echo "VIM: Problem downloading vim-plug, plugins have not been installed."
+  echo "Problems installing vim-plug."
 fi

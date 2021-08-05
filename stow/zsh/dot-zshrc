@@ -1,22 +1,22 @@
+CONFIG_DIRECTORY="${HOME}/.config"
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-DOTFILES_REPO=$HOME/.dotfiles
+if [[ -f "${CONFIG_DIRECTORY}/zsh/p10k.zsh" ]]; then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+  source "${CONFIG_DIRECTORY}/zsh/p10k.zsh"
+fi
 
-if [[ -d $DOTFILES_REPO ]] {
-  source $DOTFILES_REPO/zsh/main
-}
-
+# Enable PyEnv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-
+# Functions
 alias notes="ls -1t ~/Documents/notes"
 
 note () {
@@ -45,3 +45,7 @@ alias gstl='g stash list'
 alias gstm='g stash -m '
 alias gstp='g stash pop'
 
+# Extra Config
+if [[ -f $DOTFILES_REPO/zsh/.extra ]] {
+ source $DOTFILES_REPO/zsh/.extra
+}
