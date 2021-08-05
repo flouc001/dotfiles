@@ -1,27 +1,12 @@
 export DOTFILES_REPO=$HOME/.dotfiles
 
-link_file () {
-  src=$1
-  dst=$2
-  if [[ -f $dst || -h $dst ]] {
-    read -q "ans?Would you like to overwrite $dst? "
-    echo ""
-    if [[ $ans == "y" ]] {
-      ln -fhsv $src $dst
-    }
-  } else {
-    ln -sv $src $dst
-  }
-}
-
 echo "Loading files from: $DOTFILES_REPO"
 
-install_dotfiles () {
-  echo "Symlinking config files..."
-  for src in $(find -H "$DOTFILES_REPO" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+stow_config () {
+  for package in $(find "$DOTFILES_REPO/stow" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
   do
-    dst="$HOME/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
+    echo "Stowing: $package"
+    stow -d "$DOTFILES_REPO/stow" -t "$HOME/test-stow" --dotfiles $package
   done
 }
 
@@ -42,14 +27,14 @@ install_git () {
 
 run_installs () {
   echo "Running other install files..."
-  for src in $(find "$DOTFILES_REPO" -mindepth 2 -name "install_*")
+  for src in $(find "$DOTFILES_REPO/installation" -mindepth 2 -name "install_*")
   do
     echo "Executing: $src"
     zsh $src
   done
 }
 
+stow_config
 install_git
-install_dotfiles
 run_installs
 
