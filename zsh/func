@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-alias notes="ls -1t ~/Documents/notes"
-
-note () {
-  name=$1
-  vim $HOME/Documents/notes/$name
-}
-
