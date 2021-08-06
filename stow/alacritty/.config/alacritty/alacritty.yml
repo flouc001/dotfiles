@@ -5,6 +5,8 @@ window:
 
 key_bindings:
   - { key: Key3, mods: Alt, chars: "\x23" }
+  - { key: Left, mods: Alt, chars: "\x1bb" }
+  - { key: Right, mods: Alt, chars: "\x1bf" }
 
 import:
   - ~/.config/dracula_theme.yml
