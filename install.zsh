@@ -27,7 +27,7 @@ install_git () {
 
 run_installs () {
   echo "Running other install files..."
-  for src in $(find "$DOTFILES_REPO/installation" -mindepth 2 -name "install_*")
+  for src in $(find "$DOTFILES_REPO/installation" -name "install_*")
   do
     echo "Executing: $src"
     zsh $src
