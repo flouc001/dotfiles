@@ -6,4 +6,12 @@ brew "bat"
 brew "git-delta"
 brew "stow"
 brew "yarn"
+
+brew "pyenv"
+brew "openssl"
+brew "readline"
+brew "sqlite3"
+brew "xz"
+brew "zlib"
+
 cask "alacritty"
