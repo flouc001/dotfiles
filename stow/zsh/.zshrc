@@ -45,6 +45,7 @@ alias gstd='g stash drop'
 alias gstl='g stash list'
 alias gstm='g stash -m '
 alias gstp='g stash pop'
+alias gbd='g branch -D '
 
 # Extra Config
 if [[ -f $CONFIG_DIRECTORY/zsh/.extra ]] {
