@@ -1,8 +1,3 @@
-window:
-  padding:
-    x: 5
-    y: 5
-
 key_bindings:
   - { key: Key3, mods: Alt, chars: "\x23" }
   - { key: Left, mods: Alt, chars: "\x1bb" }
@@ -10,3 +5,21 @@ key_bindings:
 
 import:
   - ~/.config/dracula_theme.yml
+
+font:
+  normal:
+    family: 'Ubuntu Mono'
+    style: Regular
+  size: 14.00
+
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach -t alacritty-session || tmux new -s alacritty-session"
+
+window:
+  padding:
+    x: 3
+    y: 2
