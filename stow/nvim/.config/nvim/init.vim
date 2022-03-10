@@ -7,17 +7,33 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
-" Preferences
+" –––––––––––
+" Style setup
+" –––––––––––
+
 syntax on
 set tabstop=2 shiftwidth=2 expandtab
 set ignorecase
 set smartcase
 set number
 
+" –––––––––––––––
+" Alacritty setup
+" –––––––––––––––
+
 " Needed as terminal doesn't have truecolor support
 " https://github.com/dracula/vim/issues/96#issuecomment-402274366
 let g:dracula_colorterm = 0
+
+" –––––––––––
+" Theme setup
+" –––––––––––
+
 colorscheme dracula
+
+" ––––––––––––––
+" NERDTree setup
+" ––––––––––––––
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -27,7 +43,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" ––––––––––
 " CoC Config
+" ––––––––––
+
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
