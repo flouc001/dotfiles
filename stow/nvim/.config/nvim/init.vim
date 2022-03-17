@@ -1,11 +1,30 @@
 call plug#begin('~/.vim/plugged')
-Plug 'elzr/vim-json'
 Plug 'preservim/nerdtree'
+" Formatting
 Plug 'prettier/vim-prettier'
 Plug 'editorconfig/editorconfig-vim'
+" Theme
 Plug 'dracula/vim', { 'as': 'dracula' }
+" Syntax highlighting
+Plug 'elzr/vim-json'
+Plug 'leafgarland/typescript-vim'
+" Language server support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
+
+" –––––––––
+" CoC Setup
+" –––––––––
+let g:coc_global_extensions = ['coc-tsserver']
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
 
 " –––––––––––
 " Style setup
