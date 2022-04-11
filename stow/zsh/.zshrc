@@ -47,6 +47,8 @@ alias gstm='g stash -m '
 alias gstp='g stash pop'
 alias gbd='g branch -D '
 
+alias t='nvim $HOME/Documents/todo.md'
+
 # Extra Config
 if [[ -f $CONFIG_DIRECTORY/zsh/.extra ]] {
  source $CONFIG_DIRECTORY/zsh/.extra
@@ -59,3 +61,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load PyEnv
 eval "$(pyenv init -)"
+
+# Add the Z command installed with brew
+. $(brew --prefix)/etc/profile.d/z.sh

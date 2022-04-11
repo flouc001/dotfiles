@@ -12,6 +12,5 @@ brew "openssl"
 brew "readline"
 brew "sqlite3"
 brew "xz"
+brew "z"
 brew "zlib"
-
-cask "alacritty"
