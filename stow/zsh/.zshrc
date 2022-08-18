@@ -49,18 +49,20 @@ alias gbd='g branch -D '
 
 alias t='nvim $HOME/Documents/todo.md'
 
+# Node aliases
+alias npmr='npm run '
+
 # Extra Config
 if [[ -f $CONFIG_DIRECTORY/zsh/.extra ]] {
  source $CONFIG_DIRECTORY/zsh/.extra
 }
-
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load PyEnv
 eval "$(pyenv init -)"
 
 # Add the Z command installed with brew
 . $(brew --prefix)/etc/profile.d/z.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+. /usr/local/opt/asdf/libexec/asdf.sh

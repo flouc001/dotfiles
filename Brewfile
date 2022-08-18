@@ -1,3 +1,4 @@
+brew "asdf"
 brew "ripgrep"
 brew "fd"
 brew "tmux"

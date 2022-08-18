@@ -24,6 +24,8 @@ install_git () {
       git config --global github.user "$GH_USER"
       git config --global include.path "$DOTFILES_REPO/git/gitconfig.ini"
     }
+  } else {
+    echo "Found existing git config file."
   }
 }
 
@@ -39,4 +41,3 @@ run_installs () {
 stow_config
 install_git
 run_installs
-
