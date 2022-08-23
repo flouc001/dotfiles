@@ -1,3 +1,5 @@
+tap "homebrew/cask"
+
 brew "asdf"
 brew "ripgrep"
 brew "fd"
@@ -15,3 +17,5 @@ brew "sqlite3"
 brew "xz"
 brew "z"
 brew "zlib"
+
+cask "raycast"
