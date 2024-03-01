@@ -19,3 +19,4 @@ brew "z"
 brew "zlib"
 
 cask "raycast"
+cask "hiddenbar"

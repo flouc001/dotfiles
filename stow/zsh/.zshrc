@@ -17,14 +17,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Functions
-alias notes="ls -1t ~/Documents/notes"
-
-note () {
-  name=$1
-  vim $HOME/Documents/notes/$name
-}
-
 # Git aliases
 alias g='git'
 alias ga='git add'
@@ -46,6 +38,8 @@ alias gstl='g stash list'
 alias gstm='g stash -m '
 alias gstp='g stash pop'
 alias gbd='g branch -D '
+alias gnuke='g reset --hard && g clean -fd'
+alias gir='g rebase -i '
 
 alias t='nvim $HOME/Documents/todo.md'
 
@@ -53,16 +47,36 @@ alias t='nvim $HOME/Documents/todo.md'
 alias npmr='npm run '
 
 # Extra Config
-if [[ -f $CONFIG_DIRECTORY/zsh/.extra ]] {
- source $CONFIG_DIRECTORY/zsh/.extra
+if [[ -f $CONFIG_DIRECTORY/zsh/.extra.zsh ]] {
+ source $CONFIG_DIRECTORY/zsh/.extra.zsh
 }
 
 # Load PyEnv
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# Load RBEnv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Load Brew
+if which brew > /dev/null; then eval "$(/opt/homebrew/bin/brew shellenv)"; fi
 
 # Add the Z command installed with brew
 . $(brew --prefix)/etc/profile.d/z.sh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+if [[ -d $HOME/.rd/bin ]] {
+  export PATH="$HOME/.rd/bin:$PATH"
+}
+
+if [[ -d $HOME/.session-manager/bin ]] {
+  export PATH="$HOME/.session-manager/bin:$PATH"
+}
+
+if [[ -f /opt/homebrew/opt/asdf/asdf.sh ]] {
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+  export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY="latest_installed"
+}
+

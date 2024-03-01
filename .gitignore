@@ -1,6 +1,6 @@
 .DS_Store
 
-**/.extra
-**/.creds
+**/.extra*
+**/.creds*
 
 Brewfile.lock.json
