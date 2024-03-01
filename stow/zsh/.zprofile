@@ -40,7 +40,3 @@ fi
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
-
-# Pyenv
-eval "$(pyenv init --path)"
-

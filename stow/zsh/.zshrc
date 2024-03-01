@@ -1,6 +1,11 @@
 CONFIG_DIRECTORY="${HOME}/.config"
 DOTFILES_REPO="${HOME}/.dotfiles"
 
+# Load Brew
+if [[ -s "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -10,11 +15,6 @@ fi
 if [[ -f "${CONFIG_DIRECTORY}/zsh/p10k.zsh" ]]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
   source "${CONFIG_DIRECTORY}/zsh/p10k.zsh"
-fi
-
-# Enable PyEnv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
 fi
 
 # Git aliases
@@ -52,14 +52,14 @@ if [[ -f $CONFIG_DIRECTORY/zsh/.extra.zsh ]] {
 }
 
 # Load PyEnv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Load RBEnv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Load Brew
-if which brew > /dev/null; then eval "$(/opt/homebrew/bin/brew shellenv)"; fi
 
 # Add the Z command installed with brew
 . $(brew --prefix)/etc/profile.d/z.sh
