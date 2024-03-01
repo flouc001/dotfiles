@@ -1,4 +1,5 @@
 export DOTFILES_REPO=$HOME/.dotfiles
+export CREDS_DIRECTORY=$HOME/.creds
 
 echo "Loading files from: $DOTFILES_REPO"
 
@@ -15,7 +16,7 @@ stow_config () {
 install_git () {
   echo "Installing git config..."
   if [[ ! -f "$HOME/.gitconfig" ]] {
-    creds_file="$DOTFILES_REPO/git/.creds"
+    creds_file="$CREDS_DIRECTORY/.git-creds"
     if [[ -f $creds_file ]] {
       source $creds_file
 

@@ -1,5 +1,6 @@
 CONFIG_DIRECTORY="${HOME}/.config"
 DOTFILES_REPO="${HOME}/.dotfiles"
+CREDS_DIRECTORY="${HOME}/.creds"
 
 # Load Brew
 if [[ -s "/opt/homebrew/bin/brew" ]]; then
@@ -47,8 +48,8 @@ alias t='nvim $HOME/Documents/todo.md'
 alias npmr='npm run '
 
 # Extra Config
-if [[ -f $CONFIG_DIRECTORY/zsh/.extra.zsh ]] {
- source $CONFIG_DIRECTORY/zsh/.extra.zsh
+if [[ -f $CREDS_DIRECTORY/.private ]] {
+ source $CREDS_DIRECTORY/.private
 }
 
 # Load PyEnv
